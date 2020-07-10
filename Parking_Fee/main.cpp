@@ -63,7 +63,7 @@ void priceFee(){
 }
 
 void displayMenu(){
-        char a;
+        char input1, input2;
 
     parking :
         cout<<"___________________________________________"<<endl;
@@ -78,17 +78,21 @@ void displayMenu(){
         cout<<"___________________________________________"<<endl;
     
     priceFee();
-    
-    cout<<" SIGN OUT ? (y/n): "; cin>>a;
-    
     cout<<endl;
     
-    if(a=='y' || a=='Y'){
-        getAccess();
+    cout<<" Book Another Parking Site? (y/n): ";cin>>input1;
+    if(input1=='y' || input1=='Y'){
+        displayMenu();
     }
     else{
-        cout<<"NONE"<<endl;
+        cout<<" Exit Program? (y/n): "; cin>>input2;
+    
+        if(input2=='y' || input2=='Y'){
+            exit(1);
+        }
     }
+    
+
 }
 
 void getAccess(){
