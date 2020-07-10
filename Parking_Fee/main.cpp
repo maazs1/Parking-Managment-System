@@ -2,32 +2,6 @@
 #include <istream>
 using namespace std;
 
-class loginManager{
-    
-    private: 
-        string password = "123";
-        string username = "user";
-        bool accessGranted;
-    
-    public:  
-        string usernameA;
-        string passwordA;
-        
-        loginManager(){
-            accessGranted = false;
-        }
-        
-        void login(){
-            cout<<" Enter your username and password"<<endl;
-            cout<<" Username: "; cin>>usernameA;
-            cout<<" Password: "; cin>>passwordA;
-            
-            if (usernameA==username && passwordA==password){
-                cout<<"Matches"<<endl;
-            }
-        }
-
-};
 
 void priceFee(){
     
@@ -111,11 +85,72 @@ void displayMenu(){
     }
 }
 
-int main(){
-    loginManager loginObj;
-    loginObj.login();
-    displayMenu();   
+void getAccess(){
+    string enteredName, signedName, email, signedPassword, enteredPassword, back, retypedPass;
+    int numberTyped;
+    
+    
+    menuDisplay: 
+        cout<<endl<<endl;
+        cout<<" SIGN UP [1]"<<endl;
+        cout<<" SIGN IN [2]"<<endl;
+        cout<<" --------------------"<<endl;
+        cout<<" Enter Number: "; cin>>numberTyped;
+        
+        
+        switch(numberTyped){
+            case 1:
+                goto signup;
+                break;
+            
+            case 2: 
+                goto signin;
+                break;
+                
+            default: 
+                cout<<" Invalid Number, Try Again"<<endl;
+                goto menuDisplay;
+        }
+        
+    signup: 
+        cout<<" Enter the Following Details to Create an Account"<<endl;
+        cout<<" Username: ";cin>>enteredName;
+        cout<<" Email: ";cin>>email;
+        cout<<" Password: ";cin>>enteredPassword;
+        cout<<" Retype Password: ";cin>>retypedPass;
+        if (retypedPass == enteredPassword){
+            cout<<" Account Created ! Please SignIn to Continue"<<endl;
+            goto signin;
+        }
+        else{
+            cout<<"Password did not match. Please try again"<<endl;
+            goto signup;
+        }
+    signin:
+        cout<<" LOGIN"<<endl;
+        cout<<" Username/Email: "; cin>>signedName;
+        cout<<" Password: ";cin>>signedPassword;
+        cout<<endl<<endl;
+        if ((signedPassword == enteredPassword) && (signedName==enteredName) || (email == signedName)){
+            cout<<" -------LOGGED IN-------<<"<<endl;
+            displayMenu(); 
+        }
+        else if ((signedPassword != enteredPassword) && (signedName!=enteredName) || (email != signedName)) {
+            cout<<"INVALID USERNAME/EMAIL OR PASSWORD!"<<endl;
+            cout<<"PLEASE CHECK YOUR USERNAME/EMAIL & PASSWORD"<<endl;
+            goto menuDisplay;
+        }
+        else{
+            cout<<"LOGIN FAILED!"<<endl;
+            goto menuDisplay;
+        }
 
+}
+
+
+int main(){
+    getAccess();
+    
 }
 
 
