@@ -2,6 +2,33 @@
 #include <istream>
 using namespace std;
 
+class loginManager{
+    
+    private: 
+        string password = "123";
+        string username = "user";
+        bool accessGranted;
+    
+    public:  
+        string usernameA;
+        string passwordA;
+        
+        loginManager(){
+            accessGranted = false;
+        }
+        
+        void login(){
+            cout<<" Enter your username and password"<<endl;
+            cout<<" Username: "; cin>>usernameA;
+            cout<<" Password: "; cin>>passwordA;
+            
+            if (usernameA==username && passwordA==password){
+                cout<<"Matches"<<endl;
+            }
+        }
+
+};
+
 void priceFee(){
     
     string number;
@@ -28,11 +55,11 @@ void priceFee(){
         fee= duration*10;
         cout<<" Parking Fee : $"<<fee<<endl;
     }
-    else if (duration >=2 && type==2){
+    else if ( type==2){
         fee= duration*50;
         cout<<" Parking Fee : $"<<fee<<endl;
     }
-    else if (duration >=2 && type==3){
+    else if (type==3){
         fee= duration*100;
         cout<<" Parking Fee : $"<<fee<<endl;
     }
@@ -46,32 +73,32 @@ void priceFee(){
     cout<<"Printing Receipt............"<<endl;
     goto print;
     
-print : 
-    cout<<endl<<endl;
-    cout<<" ___________________________________"<<endl;
-    cout<<"| Type                 : "<<type<<endl;
-    cout<<"| License Plate        : "<<number<<endl;
-    cout<<"| Parking Duration     : "<<duration<<" Hour/s"<<endl;
-    cout<<"| Parking Fee          : $"<<fee<<endl;
-    cout<<"|         >> Paid off <<         "<<endl;
-    cout<<" ___________________________________"<<endl;
-    cout<<"            THANK YOU            "<<endl;
+    print : 
+        cout<<endl<<endl;
+        cout<<" ___________________________________"<<endl;
+        cout<<"| Type                 : "<<type<<endl;
+        cout<<"| License Plate        : "<<number<<endl;
+        cout<<"| Parking Duration     : "<<duration<<" Hour/s"<<endl;
+        cout<<"| Parking Fee          : $"<<fee<<endl;
+        cout<<"|         >> Paid off <<         "<<endl;
+        cout<<" ___________________________________"<<endl;
+        cout<<"            THANK YOU            "<<endl;
 }
 
-int main(){
-    char a;
+void displayMenu(){
+        char a;
 
-parking :
-    cout<<"-------------------------------------------"<<endl;
-    cout<<"          PARKING FEE (Vehicles)           "<<endl;
-    cout<<"            MAAZ'S PARKING LOT              "<<endl;
-    cout<<"            EDMONTON, ALBERTA               "<<endl;
-    cout<<"-------------------------------------------"<<endl;
-    cout<<"         >> Transportation type <<         "<<endl;
-    cout<<" Motorcyle : 1                             "<<endl;
-    cout<<" Car       : 2                             "<<endl;
-    cout<<" Bus/Truck : 3                             "<<endl;
-    cout<<"-------------------------------------------"<<endl;
+    parking :
+        cout<<"-------------------------------------------"<<endl;
+        cout<<"          PARKING FEE (Vehicles)           "<<endl;
+        cout<<"            MAAZ'S PARKING LOT              "<<endl;
+        cout<<"            EDMONTON, ALBERTA               "<<endl;
+        cout<<"-------------------------------------------"<<endl;
+        cout<<"         >> Transportation type <<         "<<endl;
+        cout<<" Motorcyle : 1                             "<<endl;
+        cout<<" Car       : 2                             "<<endl;
+        cout<<" Bus/Truck : 3                             "<<endl;
+        cout<<"-------------------------------------------"<<endl;
     
     priceFee();
     
@@ -81,8 +108,14 @@ parking :
     
     if(a=='y' || a=='Y'){
         goto parking;
-        return 0;
     }
+}
+
+int main(){
+    loginManager loginObj;
+    loginObj.login();
+    displayMenu();   
+
 }
 
 
