@@ -1,6 +1,6 @@
 #include <iostream>
 #include <istream>
-using namespace std
+using namespace std;
 
 void priceFee(){
     
@@ -22,39 +22,28 @@ void priceFee(){
         duration = (12-startingTime)+exitTime;
     }
     
-    cout<<" Parking Duration    : "<<durration<<"Hour/s"<<endl;
+    cout<<" Parking Duration    : "<<duration<<"Hour/s"<<endl;
     
-    if (duration >=2 && type==1){
-        fee= (duration-0)*1000*1;
+    if (type==1){
+        fee= duration*10;
         cout<<" Parking Fee : $"<<fee<<endl;
     }
     else if (duration >=2 && type==2){
-        fee= (duration-0)*5000*1;
+        fee= duration*50;
         cout<<" Parking Fee : $"<<fee<<endl;
     }
     else if (duration >=2 && type==3){
-        fee= (duration-0)*10000*1;
+        fee= duration*100;
         cout<<" Parking Fee : $"<<fee<<endl;
     }
-    else if (duration >=2 && type==){
-        fee= 1000;
-        cout<<" Parking Fee : $"<<fee<<endl;
-    }
-    else if (duration >=2 && type==2){
-        fee= 5000;
-        cout<<" Parking Fee : $"<<fee<<endl;
-    }
-    else if (duration >=2 && type==3){
-        fee= 10000;
-        cout<<" Parking Fee : $"<<fee<<endl;
-    }
+
     cout<<endl<<endl;
-    cout<<"Enter the cost   : $"; cin>>cost;
-    reference=cost-fee;
-    cout<<"Refund           : $"<<reference;
+    cout<<"Enter your Ammount     : $"; cin>>cost;
+    reference=cost-fee; 
+    cout<<"Your Refund is         : $"<<reference;
     
     cout<<endl<<endl;
-    cout<<"Printing struct............"<<endl;
+    cout<<"Printing Receipt............"<<endl;
     goto print;
     
 print : 
@@ -69,13 +58,31 @@ print :
     cout<<"            THANK YOU            "<<endl;
 }
 
-int main()
+int main(){
     char a;
 
-parkng:
+parking :
     cout<<"-------------------------------------------"<<endl;
-    cout<<"       PARKING FEE (CAR/MOTORCYLE)       "<<endl;
-    cout<<"           MAAZ'S PARKING LOT            "<<endl;
-    cout<<"           EDMONTON, ALBERTA             "<<endl;
+    cout<<"          PARKING FEE (Vehicles)           "<<endl;
+    cout<<"            MAAZ'S PARKING LOT              "<<endl;
+    cout<<"            EDMONTON, ALBERTA               "<<endl;
+    cout<<"-------------------------------------------"<<endl;
+    cout<<"         >> Transportation type <<         "<<endl;
+    cout<<" Motorcyle : 1                             "<<endl;
+    cout<<" Car       : 2                             "<<endl;
+    cout<<" Bus/Truck : 3                             "<<endl;
+    cout<<"-------------------------------------------"<<endl;
     
+    priceFee();
     
+    cout<<"Count again ? (y/n) "; cin>>a;
+    
+    cout<<endl;
+    
+    if(a=='y' || a=='Y'){
+        goto parking;
+        return 0;
+    }
+}
+
+
